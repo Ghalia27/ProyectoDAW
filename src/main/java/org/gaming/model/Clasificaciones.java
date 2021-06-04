@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Clasificaciones")
+@Table(name="clasificaciones")
 public class Clasificaciones {
 	
 	
@@ -14,7 +14,7 @@ public class Clasificaciones {
 		@Column(name="idclasificacion")
 		private int idclasificacion;
 		
-		@Column(name="Nombre")
+		@Column(name="nombre")
 		private String Nombre;
 		
 		@Column(name="descripcion")
