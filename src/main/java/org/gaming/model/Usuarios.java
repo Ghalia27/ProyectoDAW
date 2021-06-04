@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Usuarios")
+@Table(name="usuarios")
 public class Usuarios {
 
 	
@@ -42,7 +42,10 @@ public class Usuarios {
 	private int idgenero;
 	
 	@Column(name="dni")
-	private String dni;
+	private int dni;
+	
+	@Column(name="nro_cuenta")
+	private int nrocuenta;
 
 	public int getIdusuario() {
 		return idusuario;
@@ -125,12 +128,20 @@ public class Usuarios {
 		this.idgenero = idgenero;
 	}
 
-	public String getDni() {
+	public int getDni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
+	}
+	
+	public int getNrocuenta() {
+		return nrocuenta;
+	}
+
+	public void setNrocuenta(int nrocuenta) {
+		this.nrocuenta = nrocuenta;
 	}
 	
 	
