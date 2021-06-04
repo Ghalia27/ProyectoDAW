@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Generos_juegos")
+@Table(name="genero_juego")
 public class Generos_juegos {
 	
 	@Id
-	@Column(name="idgenero")
+	@Column(name="idgenerojuego")
 	private int idgenero;
 	
 	@Column(name="nombre")
