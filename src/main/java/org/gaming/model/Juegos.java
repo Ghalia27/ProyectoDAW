@@ -13,7 +13,7 @@ public class Juegos {
 	@Column(name="idjuego")
 	private int idjuego;
 	
-	@Column(name="idgenero")
+	@Column(name="idgenerojuego")
 	private int idgenero;
 	
 	@Column(name="idplataforma")
