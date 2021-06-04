@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Juegos")
+@Table(name="juegos")
 public class Juegos {
 	
 	@Id
@@ -28,13 +28,13 @@ public class Juegos {
 	@Column(name="titulo")
 	private String titulo;
 	
-	@Column(name="imagen")
-private String imagen;
+	/*@Column(name="imagen")
+private String imagen;*/
 	
 	@Column(name="descripcion")
 private String descripcion;
 	
-	@Column(name="anio")
+	@Column(name="fecha_publicacion")
 private String anio;
 	
 	@Column(name="stock")
@@ -43,8 +43,8 @@ private String stock;
 	@Column(name="precio")
 private double precio;
 	
-	@Column(name="estado")
-private String estado;
+	@Column(name="idestado")
+private int estado;
 
 	public int getIdjuego() {
 		return idjuego;
@@ -94,13 +94,13 @@ private String estado;
 		this.titulo = titulo;
 	}
 
-	public String getImagen() {
+	/*public String getImagen() {
 		return imagen;
 	}
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
-	}
+	}*/
 
 	public String getDescripcion() {
 		return descripcion;
@@ -136,11 +136,11 @@ private String estado;
 		this.precio = precio;
 	}
 
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 
