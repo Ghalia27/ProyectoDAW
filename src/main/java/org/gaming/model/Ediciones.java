@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Ediciones")
+@Table(name="ediciones")
 public class Ediciones {
 	
 	@Id
-	@Column(name="idedicion")
+	@Column(name="idediciones")
 	private int idedicion;
 	
 	@Column(name="nombre")
