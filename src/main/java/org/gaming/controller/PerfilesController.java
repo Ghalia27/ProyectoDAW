@@ -1,7 +1,7 @@
-package org.gamingaddicted.controller;
+package org.gaming.controller;
 
-import org.gamingaddicted.model.Perfiles;
-import org.gamingaddicted.repository.IPerfilesRepository;
+import org.gaming.model.Perfiles;
+import org.gaming.repository.IPerfilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +16,13 @@ public class PerfilesController {
 	@Autowired
 	private IPerfilesRepository repo;
 	
-	@GetMapping("/cargar")
+	@GetMapping("/cargarPerfil")
 	public String cargarPerfil(Model model) {
 		model.addAttribute("perfiles", new Perfiles());
 		return "Mantener_Perfiles";
 	}
 	
-	@PostMapping("/grabar")
+	@PostMapping("/grabarPerfil")
 	public String guardarPerfil(@ModelAttribute Perfiles perfiles, Model model) throws Exception{	
 		System.out.println(perfiles);
 		String message = null;
@@ -40,14 +40,14 @@ public class PerfilesController {
 		return "Mantener_Perfiles";
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping("/listarPerfil")
 	public String listadoPerfil(Model model) {	
 		model.addAttribute("lstPerfil", repo.findAll());
 		return "Listar_Perfiles";
 	}
 	
 	
-	@PostMapping("/buscar")
+	@PostMapping("/buscarPerfil")
 	public String buscarPerfil(@ModelAttribute Perfiles p, Model model) {
 		System.out.println(p);
 		model.addAttribute("perfiles",repo.findById(p.getIdperfil()));
@@ -55,7 +55,7 @@ public class PerfilesController {
 	}
 	
 	// Evaluar si va a haber un eliminar 
-	@PostMapping("/eliminar")
+	@PostMapping("/eliminarPerfil")
 	public String eliminarPerfil(@ModelAttribute Perfiles p, Model model) {
 		System.out.println(p);
 		repo.delete(p);
