@@ -21,7 +21,7 @@
 <body>
 	<div id="contenedor" style="margin-left: 20%; width: 60%;">
 	<h1>Mantenimiento de perfiles</h1>
-		<form th:object="${perfiles}" th:action="@{/grabar}" method="POST">
+		<form th:object="${perfiles}" th:action="@{/grabarPerfil}" method="POST">
 		
 			<div class="form-group">
 				<label for="idperfil">Id Perfil :</label>
@@ -39,7 +39,7 @@
 		
 
 			<button type="submit" class="btn btn-primary" name="btn">Actualizar</button>
-			<a th:href="@{/listar}" class="btn btn-primary">Listado</a>
+			<a th:href="@{/listarPerfil}" class="btn btn-primary">Listado</a>
 		</form>
 	</div>
 	
