@@ -1,7 +1,7 @@
-package org.gamingaddicted.controller;
+package org.gaming.controller;
 
-import org.gamingaddicted.model.Generos;
-import org.gamingaddicted.repository.IGenerosRepository;
+import org.gaming.model.Generos;
+import org.gaming.repository.IGenerosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
