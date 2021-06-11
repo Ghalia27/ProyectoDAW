@@ -34,7 +34,7 @@
 		      	<td th:text="${p.idperfil}"> </td>
 		      	<td th:text="${p.nombre}"> </td>
 		      	<td>
-		      		<form method="post" th:action="@{/buscar}">
+		      		<form method="post" th:action="@{/buscarPerfil}">
 		      			<input type="hidden" name="idperfil" th:value="${p.idperfil}">
 		      			<button type="submit" class="btn btn-info">Editar</button>
 		      		</form>
