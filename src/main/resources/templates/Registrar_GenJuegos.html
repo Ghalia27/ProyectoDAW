@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Getting Started: Serving Web Content</title> 
+    <title>Mantener Generos Juegos</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     
 <!-- Latest compiled and minified CSS -->
@@ -22,32 +22,43 @@
 
 	<div id="contenedor" style="margin-left: 10%; width: 80%;">
 		<h1>Registro Generos Juegos</h1>
-		<form  method="POST" th:action="@{/grabar}">
+		<form th:object="${GenJuego}"  th:action="@{/RgstGenJuegos}"  method="POST">
 
 			
 				
 			<div class="form-row">
 
-				
+			
+ 			
 				<div class="form-group col-md-4">
-					<label for="IdNombre">Nombre</label>
-					<input type="text" class="form-control" id="IdNombre" placeholder="Nombre del Videojuego">
+					<label for="idgenero">Id Genero :</label>					
+					<input th:field="*{idgenero}" id="idgenero"
+					class="form-control" name="txtidgenero"
+					placeholder="Ingrese Id GenJuego" readonly>
 				</div>
 				
 				<div class="form-group col-md-4">
-					<label for="IdDescrip">Descripcion</label>
-					<input type="text" class="form-control" id="IdDescrip" placeholder="Descripcion del Videojuego">
+					<label for="nombre">Nombre</label>
+					<input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Nombre Genero del Videojuego">
+				</div>
+				
+				<div class="form-group col-md-4">
+					<label for="descripcion">Descripcion</label>
+					<input type="text" class="form-control" th:field="*{descripcion}" id="descripcion" placeholder="Descripcion Genero del Videojuego">
 				</div>
 				
 				
 
 			</div>
-			<button type="submit" class="btn btn-primary">Registrar</button>
+			<button type="submit" class="btn btn-primary">Actualizar</button>
 			<a th:href="@{/listGenJuegos}" class="btn btn-primary">Listado</a>
 
 		</form>
 
 	</div>
+	<c:if test="${not empty mensaje}">
+      <div class="alert alert-info" th:text="${mensaje}"> </div>
+ </c:if>
 
 </body>
 </html>

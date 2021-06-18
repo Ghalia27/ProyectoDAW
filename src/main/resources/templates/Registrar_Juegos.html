@@ -22,46 +22,40 @@
 
 	<div id="contenedor" style="margin-left: 10%; width: 80%;">
 		<h1>Mantenimiento de Juegos</h1>
-		<form  method="POST" th:action="@{/grabar}">
+		<form  th:object="${Juego}" method="POST" th:action="@{/RgstJuegos}">
 
+				
 			<div class="form-group">			
-				<label for="idGenero">Genero</label>
-				<select    class="form-control" id="idGenero">
-					      <option th:value="1 " th:text="FPS"></option>
-					      <option th:value="2"  th:text="RTS"></option>
-					      <option th:value="3"  th:text="MOBA"></option>
-					      <option th:value="4 " th:text="RPG"></option>
-					      <option th:value="5"  th:text="MMO"></option>
-					      <option th:value="6"  th:text="Battle_Royale"></option>
-					      <option th:value="7 " th:text="Deportes"></option>
-					      <option th:value="8"  th:text="Acción"></option>
-					      <option th:value="9"  th:text="Aventura"></option>
-					      <option th:value="10 " th:text="Plataformas"></option>
-					      <option th:value="12"  th:text="Conduccion"></option>
-					      <option th:value="13"  th:text="Combate"></option>
-					    </select>
+				<label for="idgenero">Genero</label>
+				<select th:field="*{idgenero}"   class="form-control" id="exampleFormControlSelect1">
+					      <option  th:each="t: ${ListGenJuego}" 
+					      th:value="${t.idgenero}" th:text="${t.nombre}"
+					      ></option>
+					     
+					 </select>
+				
+					    
 			</div>
+			
 			<div class="form-group">
-				<label for="idPlataforma">PLataforma</label>
-				<select    class="form-control" id="idPlataforma">
-					      <option th:value="1 " th:text="PS4"></option>
-					      <option th:value="2"  th:text="Xbox_One"></option>
-					      <option th:value="3"  th:text="Nintendo"></option>
-					      <option th:value="4"  th:text="PC"></option>
-					    </select>
+				<label for="idplataforma">PLataforma</label>
+				<select th:field="*{idplataforma}"   class="form-control" id="exampleFormControlSelect1">
+					      <option  th:each="t: ${ListPlataform}"  
+					      th:value="${t.idplataforma}" th:text="${t.nombre}"
+					      ></option>
+					     
+					 </select>
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="idClasificacion">Clasificacion</label>
-					<select    class="form-control" id="idClasificacion">
-					      <option th:value="1" th:text="EC "></option>
-					      <option th:value="2"  th:text="E"></option>
-					      <option th:value="3"  th:text="E_10"></option>
-					      <option th:value="4"  th:text="T"></option>
-					      <option th:value="5"  th:text="M"></option>
-					      <option th:value="6"  th:text="AO"></option>
-					    </select>
+					<select th:field="*{idclasificacion}"   class="form-control" id="exampleFormControlSelect1">
+					      <option  th:each="t: ${ListClasifi}" 
+					      th:value="${t.idclasificacion}" th:text="${t.Nombre}"
+					      ></option>
+					     
+					 </select>
 				</div>
 			</div>
 				
@@ -69,42 +63,40 @@
 
 				<div class="form-group col-md-4">
 					<label for="idEdicion">Edicion</label>
-					<select    class="form-control" id="idEdicion">
-					      <option th:value="1 " th:text="1ra"></option>
-					      <option th:value="2"  th:text="2da"></option>
-					      <option th:value="3"  th:text="3ra"></option>
-					      <option th:value="4"  th:text="4ta"></option>
-					      <option th:value="5"  th:text="5ta"></option>
-					      
-					    </select>
+					<select th:field="*{idedicion}"   class="form-control" id="exampleFormControlSelect1">
+					      <option  th:each="t: ${ListEdicion}" 
+					      th:value="${t.idedicion}" th:text="${t.nombre}"
+					      ></option>
+					     
+					 </select>
 				</div>
 
 				<div class="form-group col-md-4">
-					<label for="IdNombre">Nombre</label>
-					<input type="text" class="form-control" id="IdNombre" placeholder="Nombre del Videojuego">
+					<label for="IdNombre">Titulo</label>
+					<input type="text" th:field="*{titulo}" class="form-control" id="IdNombre" placeholder="Nombre del Videojuego">
 				</div>
 				
 				<div class="form-group col-md-4">
 					<label for="IdDescrip">Descripcion</label>
-					<input type="text" class="form-control" id="IdDescrip" placeholder="Descripcion del Videojuego">
+					<input type="text" th:field="*{descripcion}" class="form-control" id="IdDescrip" placeholder="Descripcion del Videojuego">
 				</div>
 				
 				<div class="form-group col-md-4">
 					<label for="IdFecha">Fecha</label>
-					<input type="date" class="form-control" id="IdFecha" placeholder="Descripcion del Videojuego">
+					<input type="date" th:field="*{anio}" class="form-control" id="IdFecha" placeholder="Descripcion del Videojuego">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="IdStock">Stock</label>
-					<input type="number" class="form-control" id="IdStock" placeholder="Stock del producto">
+					<input type="number"  th:field="*{stock}"class="form-control" id="IdStock" placeholder="Stock del producto">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="IdPrecio">Precio</label>
-					<input type="number" class="form-control" id="IdPrecio" placeholder="Precio del producto">
+					<input type="number" th:field="*{precio}" class="form-control" id="IdPrecio" placeholder="Precio del producto">
 				</div>
 				<div class="form-group col-md-4">
 
 					<label for="idEstado">Estado</label>
-					<select    class="form-control" id="idEstado">
+					<select  th:field="*{estado}"  class="form-control" id="idEstado">
 					      <option th:value="1" th:text="Disponible"></option>
 					      <option th:value="2" th:text="No_Disponible"></option>
 					      
@@ -114,12 +106,15 @@
 				</div>
 
 			</div>
-			<button type="submit" class="btn btn-primary">Editar</button>
-			<a th:href="@{/listado}" class="btn btn-primary">Listado</a>
+			<button type="submit" class="btn btn-primary">Registrar</button>
+			<a th:href="@{/listJuegos}" class="btn btn-primary">Listado</a>
 
 		</form>
 
 	</div>
+	<c:if test="${not empty mensaje}">
+      <div class="alert alert-info" th:text="${mensaje}"> </div>
+ </c:if>
 
 </body>
 </html>

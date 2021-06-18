@@ -29,6 +29,7 @@
       <th  >CODIGO</th>
       <th  >Nombre</th>
       <th  >Descripcion</th>
+      <th > </th>
       
     </tr>
   </thead>
@@ -36,22 +37,23 @@
     <tr th:each= "p : ${lstGenJuegos}">
       <th th:text="${p.idgenero}"  ></th>
       <td th:text="${p.nombre}"></td>
-      <td th:text="${p.descripcion}"></td>
-      
-      
+
       <td>
-      <form  th:action="@{/RgstGenJuegos}" >
-	  
+      <form method="post" th:action="@{/buscarGenJue}" >
+	  <input type="hidden" name="idgenero" th:value=${p.idgenero}  >
 	  <button type="submit" class="btn btn-info">Editar</button>
 	  </form>
       </td>
+      
+      
       <td>
-      <form method="post" th:action="@{/editar}" >
-	  <input type="hidden" name="codigo" value=${p.CodPel} id="id" >
+      <form method="GET" th:action="@{/eliminarGenJue}" >
+	  <input type="hidden" name="idgenero" th:value=${p.idgenero}  >
 	  <button type="submit" class="btn btn-info">Eliminar</button>
 	  </form>
 	  
       </td>
+      
     </tr>
     
   </tbody>

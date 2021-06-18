@@ -23,6 +23,7 @@
 
 		<h1>Listado de Generos de Juegos</h1>
 
+	
 		<table   class="table table-hover" id="myTable">
   <thead>
     <tr>
@@ -56,13 +57,15 @@
       
       
       <td>
-      <form  th:action="@{/RgstJuegos}" >
+      <form method="post" th:action="@{/buscarJuego}" >
+	  <input type="hidden" name="idjuego" th:value=${p.idjuego}  >
 	  <button type="submit" class="btn btn-info">Editar</button>
 	  </form>
       </td>
+      
       <td>
-      <form method="post" th:action="@{/editar}" >
-	  <input type="hidden" name="codigo" value=${p.CodPel} id="id" >
+      <form method="GET" th:action="@{/eliminarJue}" >
+	  <input type="hidden" name="idjuego" th:value=${p.idjuego}  >
 	  <button type="submit" class="btn btn-info">Eliminar</button>
 	  </form>
 	  
@@ -72,7 +75,10 @@
   </tbody>
 </table>
 	</div>
-
+<form  method="post" th:action="@{/buscarJuego}" >
+	  <input type="hidden" name="idjuego" th:value=1 >
+	  <button type="submit" class="btn btn-info">Registrar Juego</button>
+	</form>
 </body>
 <script>
 $(document).ready( function () {
