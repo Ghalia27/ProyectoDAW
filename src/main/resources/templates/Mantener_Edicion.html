@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Mantener Generos</title>
+<meta http-equiv="Content-Type" contect="text/html; charset=UTF-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+</head>
+
+<body>
+	<div id="contenedor" style="margin-left: 20%; width: 60%;">
+	<h1>Mantenimiento de Ediciones</h1>
+		<form th:object="${ediciones}" th:action="@{/grabarEdicion}" method="POST">
+		
+			<div class="form-group">
+				<label for="idedicion">Id Edición</label>
+				<input th:field="*{idedicion}" id="idedicion"
+					class="form-control" name="idedicion"
+					placeholder="Ingrese Id edicion" readonly>
+			</div>
+			
+			<div class="form-group">
+				<label for="nombre">Nombre Edición :</label>
+				<input th:field="*{nombre}" type="text" class="form-control"
+					placeholder="Ingrese nombre "
+					name="nombre">
+			</div>
+			<div class="form-group">
+				<label for="descripcion">Descripción Edición :</label>
+				<input th:field="*{descripcion}" type="text" class="form-control"
+					placeholder="Ingrese descripción"
+					name="descripcion">
+			</div>
+
+			<button type="submit" class="btn btn-primary" name="btn">Actualizar</button>
+			<a th:href="@{/listarEdiciones}" class="btn btn-primary">Listado</a>
+		</form>
+		<div th:if="${mensaje}" th:text="${mensaje}" />
+	</div>
+	<!--
+ 	<c:if test="${not empty mensaje}">
+      <div class="alert alert-info" th:text="${message}"> </div>-->
+ </c:if>
+</body>
+</html>

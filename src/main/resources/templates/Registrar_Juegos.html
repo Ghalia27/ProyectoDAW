@@ -22,19 +22,16 @@
 
 	<div id="contenedor" style="margin-left: 10%; width: 80%;">
 		<h1>Mantenimiento de Juegos</h1>
-		<form  th:object="${Juego}" method="POST" th:action="@{/RgstJuegos}">
+		<form  th:object="${juegos}" method="POST" th:action="@{/grabarJuego}">
 
 				
 			<div class="form-group">			
 				<label for="idgenero">Genero</label>
 				<select th:field="*{idgenero}"   class="form-control" id="exampleFormControlSelect1">
-					      <option  th:each="t: ${ListGenJuego}" 
-					      th:value="${t.idgenero}" th:text="${t.nombre}"
-					      ></option>
-					     
-					 </select>
-				
-					    
+				      <option  th:each="t: ${ListGenJuego}" 
+				      th:value="${t.idgenero}" th:text="${t.nombre}"
+				      ></option>					     
+				</select>
 			</div>
 			
 			<div class="form-group">

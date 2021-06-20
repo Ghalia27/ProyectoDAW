@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="thymeleaf.org">
+
+<head> 
+	<title>Mantenimiento Producto - Ciberfarma</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- estilos para el datatable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">	
+	<!-- lib para el datatable -->
+	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>	
+	
+</head>
+
+<body>
+	<div id="contenedor" style="margin-left: 10%;width:80%">
+		<h1>Listado de Usuarios</h1>
+		<table class="table" id="myTable">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Código Usuario</th>
+		      <th scope="col">Nombres</th>
+		      <th scope="col">Apellidos</th>
+		      <th scope="col">Edad</th>
+		      <th scope="col">Dirección</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Contrasenia</th>
+		      <th scope="col">Estado</th>
+		      <th scope="col">Perfil</th>
+		      <th scope="col">Género</th>
+		      <th scope="col">DNI</th>
+		      <th scope="col">Nro. Cuenta</th>
+		      <th scope="col"> 
+		      	
+		      </th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="u:${lstUsuarios}">
+		      <td th:text="${u.idusuario}"> </td>
+		      <td th:text="${u.nombres}"> </td>
+		      <td th:text="${u.apellidos}"> </td>
+		      <td th:text="${u.edad}"> </td>
+		      <td th:text="${u.direccion}"> </td>
+		      <td th:text="${u.email}"> </td>
+		      <td th:text="${u.contrasenia}"> </td>
+		      <td th:text="${u.estado}"> </td>
+		      <td th:text="${u.idperfil}"> </td>
+		      <td th:text="${u.idgenero}"> </td>
+		      <td th:text="${u.dni}"> </td>
+		      <td th:text="${u.nro_cuenta}"> </td>
+		      <td >
+		      	<form method="post" th:action="@{/editar}">
+					<input type="hidden" name="idusuario" th:value="${u.idusuario}">
+					<button type="submit" class="btn btn-info">Editar</button>
+				</form>
+				 </td>
+		    </tr>
+		    
+		  </tbody>
+		</table>
+	</div>
+</body>
+<script>
+	$(document).ready( function () {
+	    $('#myTable').DataTable();
+	} );
+</script>
+</html>

@@ -41,10 +41,12 @@
 			<button type="submit" class="btn btn-primary" name="btn">Actualizar</button>
 			<a th:href="@{/listarPerfil}" class="btn btn-primary">Listado</a>
 		</form>
+		<div th:if="${mensaje}" th:text="${mensaje}" />
 	</div>
-	
+	<!--
+	 <div th:text="${mensaje}"></div>
  	<c:if test="${not empty mensaje}">
       <div class="alert alert-info" th:text="${message}"> </div>
- </c:if>
+ </c:if>-->
 </body>
 </html>

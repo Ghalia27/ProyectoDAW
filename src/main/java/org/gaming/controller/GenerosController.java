@@ -1,6 +1,7 @@
 package org.gaming.controller;
 
 import org.gaming.model.Generos;
+import org.gaming.model.Perfiles;
 import org.gaming.repository.IGenerosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,21 +23,22 @@ public class GenerosController {
 	}
 	
 	@PostMapping("/grabarGenero")
-	public String guardarGeneros(@ModelAttribute Generos generos, Model model) throws Exception{	
+	public ModelAndView guardarGeneros(@ModelAttribute Generos generos, Model model) throws Exception{	
 		System.out.println(generos);
-		String message = null;
 		ModelAndView vista = new ModelAndView();
-		try {
-			repo.save(generos);
-			System.out.println("BIEN.X2......");
-			//model.addAttribute("message","Baeldung");
-			vista.setViewName("Mantener_Perfiles");
-			vista.addObject("mensaje", "Insertado Correctamente");
-		}catch(Exception e) {
-			System.out.println("ERROR.......");
+		repo.save(generos);
 			
-		};
-		return "Mantener_Generos";
+		if (repo.findById(generos.getIdgenero()).isPresent()){
+			vista.addObject("mensaje", "Registrado Correctamente");
+			vista.setViewName("Mantener_Generos");		
+			return vista;
+		}else {
+			vista.addObject("mensaje", "Error");
+			vista.setViewName("Mantener_Generos");		
+
+			return vista;
+		}
+		
 	}
 	
 	@GetMapping("/listarGenero")
@@ -45,11 +47,18 @@ public class GenerosController {
 		return "Listar_Generos";
 	}
 	
-	
+	@PostMapping("/eliminarGenero")
+	public String eliminarGenero(@ModelAttribute Generos g, Model model) {
+		System.out.println(g);
+		repo.delete(g);
+		model.addAttribute("generos",repo.findById(g.getIdgenero()));
+		return "Listar_Generos";
+	}
 	@PostMapping("/buscarGenero")
 	public String buscarGeneros(@ModelAttribute Generos g, Model model) {
 		System.out.println(g);
 		model.addAttribute("generos",repo.findById(g.getIdgenero()));
+		model.addAttribute("lstGeneros", repo.findAll());
 		return "Mantener_Generos";
 	}
 }

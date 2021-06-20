@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="thymeleaf.org">
+
+<head>
+	<title>Mantenimiento Usuario </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div id="contenedor" style="margin-left: 10%;width:80%">
+	<h1>Mantenimiento de Usuarios</h1>
+		<form th:object="${usuarios}" th:action="@{/grabar}" method="POST"  >
+		  <div class="form-group ">
+		    <label for="idusuario">Código del usuario</label>
+		    <input th:field="*{idusuario}" type="text" class="form-control" id="idusuario" aria-describedby="emailHelp" placeholder="Enter email">
+		  </div>
+		  <div class="form-group ">
+		    <label for="nombres">Nombres</label>
+		    <input th:field="*{nombres}" type="text" class="form-control" id="nombres" placeholder="Nombres">
+		  </div>
+		  <div class="form-group ">
+		    <label for="apellidos">Apellidos</label>
+		    <input th:field="*{apellidos}" type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+		  </div>		  
+		  <div class="form-group ">
+		    <label for="email">Email</label>
+		    <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Email">
+		  </div>
+		  <div class="form-group ">
+		    <label for="contrasenia">Contraseña</label>
+		    <input th:field="*{contrasenia}" type="text" class="form-control" id="contrasenia" placeholder="Contraseña">
+		  </div>
+		  <div class="form-group ">
+		    <label for="dni">DNI</label>
+		    <input th:field="*{dni}" type="number" class="form-control" id="dni" placeholder="DNI">
+		  </div>
+		  <div class="form-group ">
+		    <label for="edad">Edad</label>
+		    <input th:field="*{edad}" type="number" class="form-control" id="edad" placeholder="0">
+		  </div>
+		  <div class="form-group">
+		      <label for="idgenero">Género</label>
+		      <select th:field="*{idgenero}" id="idgenero" class="form-control">
+		       	  <option th:value="-1" th:text="Seleccione"></option>
+		       	  <option th:value="1" th:text="Femenino"></option>
+			      <option th:value="2" th:text="Masculino"></option>					
+		      </select>
+		  </div>
+		  <div class="form-group">
+		      <label for="estado">Estado</label>
+		      <select th:field="*{estado}" id="estado" class="form-control">
+		       	  <option th:value="-1" th:text="Seleccione"></option>
+		       	  <option th:value="A" th:text="Habilitado"></option>
+			      <option th:value="D" th:text="Deshabilitado"></option>					
+		      </select>
+		  </div>
+		  <div class="form-group ">
+		    <label for="direccion">Dirección</label>
+		    <input th:field="*{direccion}" type="text" class="form-control" id="direccion" placeholder="0">
+		  </div>		  
+		  <div class="form-group ">
+		     <label for="idperfil">Perfil</label>
+		     <select th:field="*{idperfil}" id="idperfil" class="form-control">
+		       	  <option th:value="-1" th:text="Seleccione"></option>
+		       	  <option th:value="1" th:text="Administrador"></option>
+			      <option th:value="2" th:text="Cliente"></option>			
+			      <option th:value="3" th:text="Supervisor"></option>			
+		     </select>
+		  </div>
+		 <div class="form-group ">
+		    <label for="nro_cuenta">Número de Cuenta</label>
+		    <input th:field="*{nro_cuenta}" type="number" class="form-control" id="nro_cuenta" placeholder="0">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Registrar</button>
+		  <a th:href="@{/listar-usuario}" class="btn btn-primary">Listado</a>
+		</form>
+	
+	</div>
+
+
+</body>
+
+</html>

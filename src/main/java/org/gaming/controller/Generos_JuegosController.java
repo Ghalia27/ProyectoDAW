@@ -21,13 +21,9 @@ public class Generos_JuegosController {
 	private IGeneros_JuegosRepository repo;
 	
 	@GetMapping("/listGenJuegos")
-	public String listadoGenJuegos(Model model) {
-		
-		
+	public String listadoGenJuegos(Model model) {		
 		model.addAttribute("lstGenJuegos", repo.findAll());
-		
-		
-		
+				
 		return "List_GenJuegos";
 	}
 	
@@ -35,7 +31,6 @@ public class Generos_JuegosController {
 	@PostMapping("/RgstGenJuegos")
 	public String guardarPerfil(@ModelAttribute Generos_juegos GenJuego, Model model) throws Exception{	
 		System.out.println(GenJuego);
-		String message = null;
 		ModelAndView vista = new ModelAndView();
 		try {
 			repo.save(GenJuego);

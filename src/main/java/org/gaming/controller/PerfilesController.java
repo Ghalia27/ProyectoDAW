@@ -23,21 +23,23 @@ public class PerfilesController {
 	}
 	
 	@PostMapping("/grabarPerfil")
-	public String guardarPerfil(@ModelAttribute Perfiles perfiles, Model model) throws Exception{	
+	public ModelAndView guardarPerfil(@ModelAttribute Perfiles perfiles, Model model) throws Exception{	
 		System.out.println(perfiles);
-		String message = null;
 		ModelAndView vista = new ModelAndView();
 		try {
 			repo.save(perfiles);
 			System.out.println("BIEN.X2......");
 			//model.addAttribute("message","Baeldung");
 			vista.setViewName("Mantener_Perfiles");
-			vista.addObject("mensaje", "Insertado Correctamente");
+			vista.addObject("mensaje", "Modificado Correctamente");
+			return vista;
 		}catch(Exception e) {
 			System.out.println("ERROR.......");
-			
-		};
-		return "Mantener_Perfiles";
+			vista.addObject("mensaje", "Error");
+			vista.setViewName("listado");
+			return vista;
+		}
+		
 	}
 	
 	@GetMapping("/listarPerfil")
@@ -60,6 +62,7 @@ public class PerfilesController {
 		System.out.println(p);
 		repo.delete(p);
 		model.addAttribute("perfiles",repo.findById(p.getIdperfil()));
-		return "Mantener_Perfiles";
+		model.addAttribute("lstPerfil", repo.findAll());
+		return "Listar_Perfiles";
 	}
 }

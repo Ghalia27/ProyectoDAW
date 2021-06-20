@@ -19,7 +19,7 @@
 </head>
 
 <body>
-	<div id="contenedor" style="margin-left: 20%; width: 60%;">
+	<div id="contenedor" style="margin-left: 20%; width: 70%;">
 	<h1>Listar - Perfiles</h1>
 	<table class="table" id="myTable">
 		<thead>
@@ -33,23 +33,24 @@
 	    	<tr th:each="p:${lstPerfil}">
 		      	<td th:text="${p.idperfil}"> </td>
 		      	<td th:text="${p.nombre}"> </td>
-		      	<td>
+		      	<td width="120px" style="display:flex;margin:auto;">
 		      		<form method="post" th:action="@{/buscarPerfil}">
 		      			<input type="hidden" name="idperfil" th:value="${p.idperfil}">
-		      			<button type="submit" class="btn btn-info">Editar</button>
+		      			<button type="submit" class="btn btn-primary">Editar</button>
 		      		</form>
-		      		<!--
-		      		<form method="post" th:action="@{/eliminar}">
+		      		&nbsp
+		      		<form method="post" th:action="@{/eliminarPerfil}">
 		      			<input type="hidden" name="idperfil" th:value="${p.idperfil}">
-		      			<button type="submit" class="btn btn-info">Eliminar</button>
+		      			<button type="submit" class="btn btn-danger">Eliminar</button>
 		      		</form>
-		      		-->
+		      		
 		      	</td>
 	    	</tr>
 	  	</tbody>
 	</table>
+	<div th:if="${message}" th:text="${message}" />
 	</div>
-	<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+	
 </body>
 <script>
 	$(document).ready( function () {

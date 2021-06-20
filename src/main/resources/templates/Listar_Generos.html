@@ -33,23 +33,24 @@
 	    	<tr th:each="p:${lstGeneros}">
 		      	<td th:text="${p.idgenero}"> </td>
 		      	<td th:text="${p.nombre}"> </td>
-		      	<td>
+		      	<td width="120px" style="display:flex;margin:auto;">
 		      		<form method="post" th:action="@{/buscarGenero}">
 		      			<input type="hidden" name="idgenero" th:value="${p.idgenero}">
-		      			<button type="submit" class="btn btn-info">Editar</button>
+		      			<button type="submit" class="btn btn-primary">Editar</button>
 		      		</form>
-		      		<!--
-		      		<form method="post" th:action="@{/eliminar}">
-		      			<input type="hidden" name="idperfil" th:value="${p.idperfil}">
-		      			<button type="submit" class="btn btn-info">Eliminar</button>
+		      		&nbsp
+		      		<form method="post" th:action="@{/eliminarGenero}">
+		      			<input type="hidden" name="idgenero" th:value="${p.idgenero}">
+		      			<button type="submit" class="btn btn-danger">Eliminar</button>
 		      		</form>
-		      		-->
+		      		
 		      	</td>
 	    	</tr>
 	  	</tbody>
 	</table>
+	
 	</div>
-	<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+	
 </body>
 <script>
 	$(document).ready( function () {
