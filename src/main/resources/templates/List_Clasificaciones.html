@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- estilos para el datatable -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<!-- lib para el datatable -->
+<script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+	<div id="contenedor" style="margin-left: 10%; width: 80%;">
+
+		<h1>Listado de Clasificaciones de Juegos</h1>
+
+<a th:href="RegistrarClasificaciones"  class="btn btn-info">Registrar Clasificaciones</a>
+<a th:href="reporteclasificaciones" target="_blank" class="btn btn-info">Generar Reporte</a>
+
+		<table   class="table table-hover" id="myTable">
+  <thead>
+    <tr>
+      <th  >CODIGO</th>
+      <th  >NOMBRE</th>
+      <th  >DESCRIPCION</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each= "c : ${lstClasificaciones}">
+      <th th:text="${c.idclasificacion}"  ></th>
+      <td th:text="${c.nombre}"></td>
+      <td th:text="${c.descripcion}"></td>
+      
+      
+      <td>
+      <form method="post" th:action="@{/editarClasificaciones}" >
+	    <input type="hidden" name="idclasificacion"  th:value=${c.idclasificacion} id="id" >
+	  <button type="submit" class="btn btn-info">Editar</button>
+	  </form>
+      </td>
+      <td>
+      <form method="get" th:action="@{/EliminarClasificaciones}" >
+	  <input type="hidden" name="idclasificacion" th:value=${c.idclasificacion} id="id" >
+	  <button type="submit" class="btn btn-info">Eliminar</button>
+	  </form>
+	  
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+	</div>
+
+
+</body>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+</html>
