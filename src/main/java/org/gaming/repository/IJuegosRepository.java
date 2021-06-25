@@ -5,5 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IJuegosRepository extends JpaRepository<Juegos, Integer> {
 	
-
+	static Juegos findFirstByCodigo(int idjuego) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

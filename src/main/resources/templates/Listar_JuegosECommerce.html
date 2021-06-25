@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Getting Started: Serving Web Content</title> 
+    <title>Gaming - Productos</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    
 <!-- Latest compiled and minified CSS -->
@@ -19,10 +19,7 @@
 </head>
 <body>
 <div id="contenedor" style="margin-left: 10%; width: 80%;">
-	<h1>Listar - Juegos</h1>
-	<form method="get" th:action="@{/cargarJuego}">
-		      			<button type="submit" class="btn btn-primary">Registrar</button>
-		      		</form>
+	<h1>Productos</h1>
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
@@ -78,16 +75,7 @@
 				</div>
 			    
 		      	 <td width="120px" style="display:flex;margin:auto;">
-		      		<form method="post" th:action="@{/buscarJuego}">
-		      			<input type="hidden" name="idjuego" th:value="${p.idjuego}">
-		      			<button type="submit" class="btn btn-primary">Editar</button>
-		      		</form>
-		      		&nbsp
-		      		<form method="post" th:action="@{/eliminarJuego}">
-		      			<input type="hidden" name="idjuego" th:value="${p.idjuego}">
-		      			<button type="submit" class="btn btn-danger">Eliminar</button>
-		      		</form>
-		      		
+		      		<a class="nav-link" th:href="@{/vender}">comprar</a>
 		      	</td>
 	    	</tr>
 	  	</tbody>

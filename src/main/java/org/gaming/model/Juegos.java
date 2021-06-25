@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 @Entity
 @Table(name="juegos")
 public class Juegos {
@@ -41,7 +43,7 @@ private String descripcion;
 private String anio;
 	
 	@Column(name="stock")
-private String stock;
+private int stock;
 	
 	@Column(name="precio")
 private double precio;
@@ -125,11 +127,11 @@ private int estado;
 		this.anio = anio;
 	}
 
-	public String getStock() {
+	public int getStock() {
 		return stock;
 	}
 
-	public void setStock(String stock) {
+	public void setStock(int stock) {
 		this.stock = stock;
 	}
 
@@ -148,6 +150,18 @@ private int estado;
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-
 	
+	public Juegos(String titulo, int idjuego, double precio, int stock) {
+        this.titulo= titulo;
+        this.idjuego = idjuego;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public Juegos() {
+    }
+    
+    public void restarExistencia(int stock) {
+    	this.stock -= stock;
+    }
 }

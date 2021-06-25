@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Ventas - GamingAddicted</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- estilos para el datatable -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<!-- lib para el datatable -->
+<script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<main layout:fragment="contenido">
+    <div class="col-12">
+        <h2>Vender</h2>
+        <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert">
+        </div>
+        <form th:object="${juegos}" th:action="@{/agregarVenta}" method="post">
+            <div class="form-group">
+                <label for="idjuego">Código de barras</label>
+                <input autofocus autocomplete="off" th:field="*{idjuego}" id="idjuego"
+                       placeholder="Escanea el código o escríbelo y presiona Enter"
+                       type="text"
+                       class="form-control">
+                <div class="invalid-feedback" th:errors="*{idjuego}"></div>
+
+            </div>
+        </form>
+        
+        <h1 th:text="${'Total: ' + total}"></h1>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Quitar de lista</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p, iterador : ${session.carrito}">
+                    <td th:text="${p.titulo}"></td>
+                    <td th:text="${p.idjuego}"></td>
+                    <td th:text="${p.precio}"></td>
+                    <td th:text="${p.cantidad}"></td>
+                    <td th:text="${p.total}"></td>
+                    <td>
+                        <form th:action="@{/vender/quitar/} + ${iterador.index}" method="post">
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
