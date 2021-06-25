@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Gaming - Productos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- estilos para el datatable -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<!-- lib para el datatable -->
+<script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div id="contenedor" style="margin-left: 10%; width: 80%;">
+	<h1>Productos</h1>
+	<table class="table" id="myTable">
+		<thead>
+		    <tr>
+		    	 <th scope="col">Codigo</th>
+		    	  <th scope="col" >Título</th>
+		      	  <th scope="col" >Género de Juego</th>
+			      <th scope="col" >Plataforma</th>
+			      <th scope="col" >Clasificacion</th>
+			      <th scope="col" >Edicion</th>
+			      <th scope="col" >Descripción</th>
+			      <th scope="col" >Año</th>
+			      <th scope="col" >Stock</th>
+			      <th scope="col" >Precio</th>
+			      <th scope="col" >Estado</th>
+			      <th scope="col"> </th>
+		    </tr>
+	  	</thead>
+	  	<tbody>
+
+		      <tr th:each= "p : ${lstJuegos}">
+		      
+			     <td th:text="${p.idjuego}"></td>
+			     <td th:text="${p.titulo}"></td>
+			     <div th:each="gj : ${ListGenJuego}" th:object="${gj}"
+					      th:if="${p.idgenerojuego}== ${gj.idgenerojuego}">
+					         <td th:text="${gj.nombre}"></td>
+					</div>
+			     <div th:each="pl : ${ListPlataform}" th:object="${pl}"
+					      th:if="${p.idplataforma}== ${pl.idplataforma}">
+					         <td th:text="${pl.nombre}"></td>
+					</div>
+			    <div th:each="cl : ${ListClasifi}" th:object="${cl}"
+					      th:if="${p.idclasificacion}== ${cl.idclasificacion}">
+					         <td th:text="${cl.nombre}"></td>
+					</div>
+					
+				<div th:each="ed : ${ListEdicion}" th:object="${ed}"
+					      th:if="${p.idedicion}== ${ed.idedicion}">
+					         <td th:text="${ed.nombre}"></td>
+					</div>
+			     
+			     <td th:text="${p.descripcion}"  ></td>
+			     <td th:text="${p.anio}"></td>
+			     <td th:text="${p.stock}"></td>
+			     <td th:text="${p.precio}"></td>
+				
+			     <div th:if="${p.estado}==1">
+   					 <td th:text="Disponible"></td>
+				</div>
+				<!-- ELSE -->
+				<div th:unless="${p.estado}==1">
+				   <td th:text="No+' '+Disponible"></td>
+				</div>
+			    
+		      	 <td width="120px" style="display:flex;margin:auto;">
+		      		<a class="nav-link" th:href="@{/vender}">comprar</a>
+		      	</td>
+	    	</tr>
+	  	</tbody>
+	</table>
+	
+	</div>
+
+</body>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+</html>

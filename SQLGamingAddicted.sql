@@ -97,12 +97,13 @@ create table vtacabecera(
 	primary key (idvta),
 	constraint fk_usuario foreign key (idusuario) references usuarios(idusuario)
 );
-
+drop table vtadetalle;
 create table vtadetalle(
 	idvta int not null,
     idjuego int,
     cantidad int,
     precio_unitario decimal(20,2),
+    monto decimal(20,2),
 	primary key (idvta,idjuego),
     constraint fk_juego foreign key (idjuego) references juegos(idjuego),
 	constraint fk_vta foreign key (idvta) references vtacabecera(idvta)
@@ -160,7 +161,10 @@ insert into juegos values(null,6,4,3,1,'Carreritas','Descripcion juego 4','2019-
 
 insert into vtacabecera values(null,2,'2021-05-15',65.50);
 
-insert into vtadetalle values(1,1,1,40.00);
-insert into vtadetalle values(1,2,1,25.50);
+insert into vtadetalle values(1,1,1,40.00,40.00);
+insert into vtadetalle values(1,2,1,25.50,25.50);
 
-
+select * from usuarios;
+select * from juegos;
+select * from vtacabecera;
+select * from vtadetalle;
