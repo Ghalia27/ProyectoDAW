@@ -26,6 +26,7 @@
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
+		    <th scope="col">Imagen</th>
 		    	 <th scope="col">Codigo</th>
 		    	  <th scope="col" >Título</th>
 		      	  <th scope="col" >Género de Juego</th>
@@ -43,7 +44,7 @@
 	  	<tbody>
 
 		      <tr th:each= "p : ${lstJuegos}">
-		      
+		      	<td><img th:src="@{${'/img/IMAGEN' + p.idjuego + '.jpg'}}" width="120"/></td>
 			     <td th:text="${p.idjuego}"></td>
 			     <td th:text="${p.titulo}"></td>
 			     <div th:each="gj : ${ListGenJuego}" th:object="${gj}"

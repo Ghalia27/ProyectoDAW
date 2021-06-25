@@ -23,7 +23,7 @@ public class Usuarios {
 	private String apellidos;
 	
 	@Column(name="edad")
-	private String edad;
+	private int edad;
 	
 	@Column(name="direccion")
 	private String direccion;
@@ -73,11 +73,12 @@ public class Usuarios {
 		this.apellidos = apellidos;
 	}
 
-	public String getEdad() {
+
+	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(String edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 

@@ -26,20 +26,19 @@
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
-		    	 <th scope="col">Codigo</th>
-		    	 <th scope="col" >DNI</th>
-		    	  <th scope="col" >Nombres</th>
-		      	  <th scope="col" >Apellidos</th>
-			      <th scope="col" >Edad</th>
-			      <th scope="col" >Sexo</th>
-			      <th scope="col" >Dirección</th>
-			      <th scope="col" >Email</th>
-			      <th scope="col" >Contraseña</th>
-			      <th scope="col" >Estado</th>
-			      <th scope="col" >Perfil</th>
-			      <th scope="col" >Nro. de Cuenta</th>
-			      
-			      <th scope="col"> </th>
+	    	  <th scope="col">Codigo</th>
+	    	  <th scope="col" >DNI</th>
+	    	  <th scope="col" >Nombres</th>
+	      	  <th scope="col" >Apellidos</th>
+		      <th scope="col" >Edad</th>
+		      <th scope="col" >Sexo</th>
+		      <th scope="col" >Dirección</th>
+		      <th scope="col" >Email</th>
+		      <th scope="col" >Contraseña</th>
+		      <th scope="col" >Estado</th>
+		      <th scope="col" >Perfil</th>
+		      <th scope="col" >Nro. de Cuenta</th>
+		      <th scope="col"> </th>
 		    </tr>
 	  	</thead>
 	  	<tbody>
@@ -69,7 +68,7 @@
 					      th:if="${p.idperfil}== ${pl.idperfil}">
 					         <td th:text="${pl.nombre}"></td>
 				</div>
-			     <td th:text="${p.nro_cuenta}"></td>
+			     <td th:text="${p.nrocuenta}"></td>
 				
 
 		      	 <td width="120px" style="display:flex;margin:auto;">

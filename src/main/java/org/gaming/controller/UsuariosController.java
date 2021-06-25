@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-public class UsuarioController {
+public class UsuariosController {
 	@GetMapping("/cargarUsuario")
 	public String cargarUsuario(Model model) {
 		model.addAttribute("usuarios", new Usuarios());
@@ -49,8 +49,8 @@ public class UsuarioController {
 	public String listadoUsuario(Model model) {
 		System.out.println("Estra a listado");
 		model.addAttribute("lstUsuarios", repo.findAll());
-		model.addAttribute("ListPerfiles", repo_perfiles.findAll());
-		model.addAttribute("ListGeneros", repo_generos.findAll());
+		//model.addAttribute("ListPerfiles", repo_perfiles.findAll());
+		//model.addAttribute("ListGeneros", repo_generos.findAll());
 		return "Listar_Usuarios";
 	}
 	
