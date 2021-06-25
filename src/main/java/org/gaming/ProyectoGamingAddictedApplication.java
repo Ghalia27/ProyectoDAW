@@ -8,6 +8,7 @@ public class ProyectoGamingAddictedApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoGamingAddictedApplication.class, args);
+		System.out.println("Termino...");
 	}
 
 }
