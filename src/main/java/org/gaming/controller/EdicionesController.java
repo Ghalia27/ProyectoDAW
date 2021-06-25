@@ -29,11 +29,13 @@ public class EdicionesController {
 		repo.save(ediciones);
 			
 		if (repo.findById(ediciones.getIdedicion()).isPresent()){
-			vista.addObject("mensaje", "Modificado Correctamente");
+			vista.addObject("mensaje", "Registrado Correctamente");
+			vista.addObject("clase", "success");
 			vista.setViewName("Mantener_Edicion");		
 			return vista;
 		}else {
 			vista.addObject("mensaje", "Error");
+			vista.addObject("clase", "danger");
 			vista.setViewName("Mantener_Edicion");		
 
 			return vista;

@@ -30,10 +30,12 @@ public class GenerosController {
 			
 		if (repo.findById(generos.getIdgenero()).isPresent()){
 			vista.addObject("mensaje", "Registrado Correctamente");
+			vista.addObject("clase", "success");
 			vista.setViewName("Mantener_Generos");		
 			return vista;
 		}else {
 			vista.addObject("mensaje", "Error");
+			vista.addObject("clase", "danger");
 			vista.setViewName("Mantener_Generos");		
 
 			return vista;

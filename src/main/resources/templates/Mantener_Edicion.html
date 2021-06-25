@@ -21,6 +21,10 @@
 <body>
 	<div id="contenedor" style="margin-left: 20%; width: 60%;">
 	<h1>Mantenimiento de Ediciones</h1>
+	<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert">
+        </div>
 		<form th:object="${ediciones}" th:action="@{/grabarEdicion}" method="POST">
 		
 			<div class="form-group">

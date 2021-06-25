@@ -19,72 +19,67 @@
 </head>
 <body>
 <div id="contenedor" style="margin-left: 10%; width: 80%;">
-	<h1>Listar - Juegos</h1>
-	<form method="get" th:action="@{/cargarJuego}">
+	<h1>Listar - Usuarios</h1>
+	<form method="get" th:action="@{/cargarUsuario}">
 		      			<button type="submit" class="btn btn-primary">Registrar</button>
 		      		</form>
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
 		    	 <th scope="col">Codigo</th>
-		    	  <th scope="col" >Título</th>
-		      	  <th scope="col" >Género de Juego</th>
-			      <th scope="col" >Plataforma</th>
-			      <th scope="col" >Clasificacion</th>
-			      <th scope="col" >Edicion</th>
-			      <th scope="col" >Descripción</th>
-			      <th scope="col" >Año</th>
-			      <th scope="col" >Stock</th>
-			      <th scope="col" >Precio</th>
+		    	 <th scope="col" >DNI</th>
+		    	  <th scope="col" >Nombres</th>
+		      	  <th scope="col" >Apellidos</th>
+			      <th scope="col" >Edad</th>
+			      <th scope="col" >Sexo</th>
+			      <th scope="col" >Dirección</th>
+			      <th scope="col" >Email</th>
+			      <th scope="col" >Contraseña</th>
 			      <th scope="col" >Estado</th>
+			      <th scope="col" >Perfil</th>
+			      <th scope="col" >Nro. de Cuenta</th>
+			      
 			      <th scope="col"> </th>
 		    </tr>
 	  	</thead>
 	  	<tbody>
 
-		      <tr th:each= "p : ${lstJuegos}">
+		      <tr th:each= "p : ${lstUsuarios}">
 		      
-			     <td th:text="${p.idjuego}"></td>
-			     <td th:text="${p.titulo}"></td>
-			     <div th:each="gj : ${ListGenJuego}" th:object="${gj}"
-					      th:if="${p.idgenerojuego}== ${gj.idgenerojuego}">
-					         <td th:text="${gj.nombre}"></td>
-					</div>
-			     <div th:each="pl : ${ListPlataform}" th:object="${pl}"
-					      th:if="${p.idplataforma}== ${pl.idplataforma}">
-					         <td th:text="${pl.nombre}"></td>
-					</div>
-			    <div th:each="cl : ${ListClasifi}" th:object="${cl}"
-					      th:if="${p.idclasificacion}== ${cl.idclasificacion}">
-					         <td th:text="${cl.nombre}"></td>
-					</div>
-					
-				<div th:each="ed : ${ListEdicion}" th:object="${ed}"
-					      th:if="${p.idedicion}== ${ed.idedicion}">
-					         <td th:text="${ed.nombre}"></td>
-					</div>
-			     
-			     <td th:text="${p.descripcion}"  ></td>
-			     <td th:text="${p.anio}"></td>
-			     <td th:text="${p.stock}"></td>
-			     <td th:text="${p.precio}"></td>
-				
-			     <div th:if="${p.estado}==1">
+			     <td th:text="${p.idusuario}"></td>
+			     <td th:text="${p.dni}"></td>
+			     <td th:text="${p.nombres}"></td>
+			     <td th:text="${p.apellidos}"></td>
+			     <td th:text="${p.edad}"></td>
+			     <div th:each="g : ${ListGeneros}" th:object="${g}"
+					      th:if="${p.idgenero}== ${g.idgenero}">
+					         <td th:text="${g.nombre}"></td>
+				 </div>
+				 <td th:text="${p.direccion}"></td>
+				 <td th:text="${p.email}"></td>
+				 <td th:text="${p.contrasenia}"></td>
+				 <div th:if="${p.estado}==1">
    					 <td th:text="Disponible"></td>
 				</div>
 				<!-- ELSE -->
 				<div th:unless="${p.estado}==1">
 				   <td th:text="No+' '+Disponible"></td>
 				</div>
-			    
+			     <div th:each="pl : ${ListPerfiles}" th:object="${pl}"
+					      th:if="${p.idperfil}== ${pl.idperfil}">
+					         <td th:text="${pl.nombre}"></td>
+				</div>
+			     <td th:text="${p.nro_cuenta}"></td>
+				
+
 		      	 <td width="120px" style="display:flex;margin:auto;">
-		      		<form method="post" th:action="@{/buscarJuego}">
-		      			<input type="hidden" name="idjuego" th:value="${p.idjuego}">
+		      		<form method="post" th:action="@{/buscarUsuario}">
+		      			<input type="hidden" name="idusuario" th:value="${p.idusuario}">
 		      			<button type="submit" class="btn btn-primary">Editar</button>
 		      		</form>
 		      		&nbsp
-		      		<form method="post" th:action="@{/eliminarJuego}">
-		      			<input type="hidden" name="idjuego" th:value="${p.idjuego}">
+		      		<form method="post" th:action="@{/eliminarUsuario}">
+		      			<input type="hidden" name="idusuario" th:value="${p.idusuario}">
 		      			<button type="submit" class="btn btn-danger">Eliminar</button>
 		      		</form>
 		      		

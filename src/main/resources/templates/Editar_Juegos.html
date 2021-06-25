@@ -21,26 +21,34 @@
 <body>
 
 	<div id="contenedor" style="margin-left: 10%; width: 80%;">
-		<h1>Registro de Juegos</h1>
-		<form  th:object="${juegos}" method="POST" th:action="@{/grabarJuego}">
-
+		<h1>Modificar Juego</h1>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert">
+        </div>
+		<form  th:object="${juegos}" method="POST" th:action="@{/editar}">
+			<div class="form-group ">
+				<label for="idjuego">Código</label>
+				<input type="text" th:field="*{idjuego}" class="form-control" id="idjuego" readonly>
+			</div>
 				
 			<div class="form-group">			
 				<label for="idgenerojuego">Género de Juegos</label>
-				<select th:field="*{idgenerojuego}"   class="form-control" id="exampleFormControlSelect1">
-				      <option> Seleccione un género de juego</option>
+				<select th:field="*{idgenerojuego}"  name="idgenerojuego" class="form-control" id="idgenerojuego">
+				      <option value="-1"> Seleccione un género de juego</option>
 				      <option  th:each="t: ${ListGenJuego}" 
-				      th:value="${t.idgenerojuego}" th:text="${t.nombre}"
+				      th:value="${t.idgenerojuego}" 
+				      th:text="${t.nombre}" value=""
 				      ></option>					     
 				</select>
 			</div>
 			
 			<div class="form-group">
 				<label for="idplataforma">PLataforma</label>
-				<select th:field="*{idplataforma}"   class="form-control" id="exampleFormControlSelect1">
-					      <option> Seleccione una plataforma</option>
+				<select th:field="*{idplataforma}"   class="form-control" id="idplataforma">
+					      <option value="-1"> Seleccione una plataforma</option>
 					      <option  th:each="t: ${ListPlataform}"  
-					      th:value="${t.idplataforma}" th:text="${t.nombre}"
+					      th:value="${t.idplataforma}" th:text="${t.nombre}" value="" 
 					      ></option>
 					     
 					 </select>
@@ -49,10 +57,10 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="idClasificacion">Clasificacion</label>
-					<select th:field="*{idclasificacion}"   class="form-control" id="exampleFormControlSelect1">
-					      <option> Seleccione una clasificación</option>
+					<select th:field="*{idclasificacion}"   class="form-control" id="idclasificacion">
+					      <option value="-1"> Seleccione una clasificación</option>
 					      <option  th:each="t: ${ListClasifi}" 
-					      th:value="${t.idclasificacion}" th:text="${t.Nombre}"
+					      th:value="${t.idclasificacion}" th:text="${t.Nombre}" value="" 
 					      ></option>
 					     
 					 </select>
@@ -63,10 +71,10 @@
 
 				<div class="form-group col-md-4">
 					<label for="idEdicion">Edicion</label>
-					<select th:field="*{idedicion}"   class="form-control" id="exampleFormControlSelect1">
-					      <option> Seleccione una edición</option>
+					<select th:field="*{idedicion}"   class="form-control" id="idedicion">
+					      <option value="-1"> Seleccione una edición</option>
 					      <option  th:each="t: ${ListEdicion}" 
-					      th:value="${t.idedicion}" th:text="${t.nombre}"
+					      th:value="${t.idedicion}" th:text="${t.nombre}" value=""
 					      ></option>
 					     
 					 </select>
@@ -98,20 +106,18 @@
 					<label for="idEstado">Estado</label>
 					<select  th:field="*{estado}"  class="form-control" id="idestado">
 					      <option th:value="1" th:text="Disponible"></option>
-					      <option th:value="2" th:text="No Disponible"></option>					      
+					      <option th:value="2" th:text="No+' '+Disponible"></option>					      
 					 </select>		
 				</div>
 
 			</div>
-			<button type="submit" class="btn btn-primary">Registrar</button>
+			<button type="submit" class="btn btn-primary">Modificar</button>
 			<a th:href="@{/listarJuego}" class="btn btn-primary">Listado</a>
 
 		</form>
 
 	</div>
-	<c:if test="${not empty mensaje}">
-      <div class="alert alert-info" th:text="${mensaje}"> </div>
- </c:if>
+	
 
 </body>
 </html>
