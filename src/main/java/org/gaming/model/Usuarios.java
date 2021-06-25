@@ -2,15 +2,17 @@ package org.gaming.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
 public class Usuarios {
-
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idusuario")
 	private int idusuario;
 	
@@ -21,7 +23,7 @@ public class Usuarios {
 	private String apellidos;
 	
 	@Column(name="edad")
-	private String edad;
+	private int edad;
 	
 	@Column(name="direccion")
 	private String direccion;
@@ -71,11 +73,12 @@ public class Usuarios {
 		this.apellidos = apellidos;
 	}
 
-	public String getEdad() {
+
+	public int getEdad() {
 		return edad;
 	}
 
-	public void setEdad(String edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 

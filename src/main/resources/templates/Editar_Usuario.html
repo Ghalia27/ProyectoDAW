@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+	<div id="contenedor" style="margin-left: 10%; width: 80%;">
+		<h1>Modificar Juego</h1>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert">
+        </div>
+		<form  th:object="${usuarios}" method="POST" th:action="@{/editarUsuario}">
+		<div class="form-group ">
+				<label for="idusuario">Código</label>
+				<input type="text" th:field="*{idusuario}" class="form-control" id="idusuario" readonly>
+			</div>
+			<div class="form-group ">
+				<label for="nombres">Nombres</label>
+				<input type="text" th:field="*{nombres}" class="form-control" id="nombres" placeholder="Ingrese nombre de usuario">
+			</div>
+			<div class="form-group ">
+				<label for="apellidos">Apellidos</label>
+				<input type="text" th:field="*{apellidos}" class="form-control" id="apellidos" placeholder="Ingrese apellido de usuario">
+			</div>
+				<div class="form-group ">
+				<label for="dni">DNI</label>
+				<input type="text" th:field="*{dni}" class="form-control" id="dni" placeholder="Ingrese dni de usuario">
+			</div>
+				<div class="form-group ">
+				<label for="edad">Edad</label>
+				<input type="text" th:field="*{edad}" class="form-control" id="edad" placeholder="Ingrese edad de usuario">
+			</div>
+			<div class="form-group">			
+				<label for="idgenero">Género </label>
+				<select th:field="*{idgenero}"   class="form-control" id="exampleFormControlSelect1">
+				      <option th:value="-1"> Seleccione su género </option>
+				      <option  th:each="t: ${ListGeneros}" 
+				      th:value="${t.idgenero}" th:text="${t.nombre}" value=""
+				      ></option>					     
+				</select>
+			</div>
+			<div class="form-group ">
+				<label for="direccion">Dirección</label>
+				<input type="text" th:field="*{direccion}" class="form-control" id="direccion" placeholder="Ingrese direccion de usuario">
+			</div>
+			<div class="form-group ">
+				<label for="email">Email</label>
+				<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Ingrese email de usuario">
+			</div>
+			<div class="form-group ">
+				<label for="contrasenia">Contraseña</label>
+				<input type="text" th:field="*{contrasenia}" class="form-control" id="contrasenia" placeholder="Ingrese contrasenia de usuario">
+			</div>
+			<div class="form-group col-md-4">
+					<label for="idEstado">Estado</label>
+					<select  th:field="*{estado}"  class="form-control" id="idestado">
+					      <option th:value="1" th:text="Disponible"></option>
+					      <option th:value="2" th:text="No +' '+Disponible"></option>					      
+					 </select>		
+				</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="idperfil">Perfil</label>
+					<select th:field="*{idperfil}"   class="form-control" id="idperfil">
+					      <option th:value="-1"> Seleccione un perfil</option>
+					      <option  th:each="t: ${ListPerfiles}" 
+					      th:value="${t.idperfil}" th:text="${t.nombre}" value=""
+					      ></option>
+					     
+					 </select>
+				</div>
+			</div>
+
+				<div class="form-group col-md-4">
+					<label for="nro_cuenta">Nro. de cuenta</label>
+					<input type="text" th:field="*{nro_cuenta}" class="form-control" id="nro_cuenta" placeholder="nro_cuenta">
+				</div>
+
+
+			</div>
+			<button type="submit" class="btn btn-primary">Modificar</button>
+			<a th:href="@{/listarUsuario}" class="btn btn-primary">Listado</a>
+
+		</form>
+
+	</div>
+	
+
+</body>
+</html>

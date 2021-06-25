@@ -51,13 +51,14 @@ public class JuegosController {
 		System.out.println(juegos.getIdjuego());
 		System.out.println(repo.findById(juegos.getIdjuego()));
 		 if (bindingResult.hasErrors()) {
-		        return "productos/agregar_producto";
+		        return "Registrar_Juegos";
 	    }
-	    if (repo.findById(juegos.getIdjuego()) != null) {
+	    if (repo.findFirstByIdjuego(juegos.getIdjuego()) != null) {
+	    	 repo.save(juegos);
 	        redirectAttrs
-	                .addFlashAttribute("mensaje", "Ya existe un juego con ese código")
+	                .addFlashAttribute("mensaje", "Este Id ya se encuentra registrado")
 	                .addFlashAttribute("clase", "warning");
-	        return "redirect:/cargarJuego";
+	        return "Editar_Juegos";
 	    }
 	    repo.save(juegos);
 	    redirectAttrs
@@ -108,7 +109,34 @@ public class JuegosController {
 		model.addAttribute("ListPlataform", repo_plataformas.findAll());
 		model.addAttribute("ListClasifi", repo_clasificacion.findAll());
 		model.addAttribute("ListEdicion", repo_ediciones.findAll());
-		return "Registrar_Juegos";
+		return "Editar_Juegos";
+	}
+
+	@PostMapping("/editar")
+	public ModelAndView actualizarJuego(@ModelAttribute  Juegos juego, Model model, BindingResult bindingResult) throws Exception{	
+		System.out.println(juego);
+		ModelAndView vista = new ModelAndView();
+		repo.save(juego);
+		Juegos posibleJuegoExistente = repo.findFirstByIdjuego(juego.getIdjuego());
+		if (posibleJuegoExistente != null && !(posibleJuegoExistente.getIdjuego() ==juego.getIdjuego())){
+			vista.addObject("mensaje", "Error");
+			vista.addObject("clase", "danger");
+			vista.addObject("ListGenJuego", repo_generos_juegos.findAll());
+			vista.addObject("ListPlataform", repo_plataformas.findAll());
+			vista.addObject("ListClasifi", repo_clasificacion.findAll());
+			vista.addObject("ListEdicion", repo_ediciones.findAll());	
+			vista.setViewName("Editar_Juegos");		
+			return vista;
+		}
+		vista.addObject("mensaje", "Registrado Correctamente");
+		vista.addObject("clase", "success");
+		vista.addObject("ListGenJuego", repo_generos_juegos.findAll());
+		vista.addObject("ListPlataform", repo_plataformas.findAll());
+		vista.addObject("ListClasifi", repo_clasificacion.findAll());
+		vista.addObject("ListEdicion", repo_ediciones.findAll());	
+		vista.setViewName("Editar_Juegos");		
+		return vista;
+		
 	}
 	
 	

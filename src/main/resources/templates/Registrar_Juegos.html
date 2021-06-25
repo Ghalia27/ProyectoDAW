@@ -3,19 +3,17 @@
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -28,12 +26,7 @@
         </div>
 		<form  th:object="${juegos}" method="POST" th:action="@{/grabarJuego}">
 
-			<div class="form-group">
-				<label for="idjuego">Id Juego:</label>
-				<input th:field="*{idjuego}" id="idjuego"
-					class="form-control" name="idjuego"
-					placeholder="Ingrese Id genero" >
-			</div>
+			
 			<div class="form-group">			
 				<label for="idgenerojuego">Género de Juegos</label>
 				<select th:field="*{idgenerojuego}"   class="form-control" id="exampleFormControlSelect1">
@@ -47,12 +40,11 @@
 			<div class="form-group">
 				<label for="idplataforma">PLataforma</label>
 				<select th:field="*{idplataforma}"   class="form-control" id="exampleFormControlSelect1">
-					      <option th:value="-1"> Seleccione una plataforma</option>
-					      <option  th:each="t: ${ListPlataform}"  
-					      th:value="${t.idplataforma}" th:text="${t.nombre}" value=""
-					      ></option>
-					     
-					 </select>
+				      <option th:value="-1"> Seleccione una plataforma</option>
+				      <option  th:each="t: ${ListPlataform}"  
+				      th:value="${t.idplataforma}" th:text="${t.nombre}" value=""></option>
+				     
+				 </select>
 			</div>
 
 			<div class="form-row">
@@ -69,7 +61,6 @@
 			</div>
 				
 			<div class="form-row">
-
 				<div class="form-group col-md-4">
 					<label for="idEdicion">Edicion</label>
 					<select th:field="*{idedicion}"   class="form-control" id="exampleFormControlSelect1">
@@ -117,9 +108,6 @@
 		</form>
 
 	</div>
-	<c:if test="${not empty mensaje}">
-      <div class="alert alert-info" th:text="${mensaje}"> </div>
- </c:if>
 
 </body>
 </html>

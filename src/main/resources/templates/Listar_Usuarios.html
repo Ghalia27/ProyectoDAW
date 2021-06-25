@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- estilos para el datatable -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<!-- lib para el datatable -->
+<script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div id="contenedor" style="margin-left: 10%; width: 80%;">
+	<h1>Listar - Usuarios</h1>
+	<form method="get" th:action="@{/cargarUsuario}">
+		      			<button type="submit" class="btn btn-primary">Registrar</button>
+		      		</form>
+	<table class="table" id="myTable">
+		<thead>
+		    <tr>
+	    	  <th scope="col">Codigo</th>
+	    	  <th scope="col" >DNI</th>
+	    	  <th scope="col" >Nombres</th>
+	      	  <th scope="col" >Apellidos</th>
+		      <th scope="col" >Edad</th>
+		      <th scope="col" >Sexo</th>
+		      <th scope="col" >Dirección</th>
+		      <th scope="col" >Email</th>
+		      <th scope="col" >Contraseña</th>
+		      <th scope="col" >Estado</th>
+		      <th scope="col" >Perfil</th>
+		      <th scope="col" >Nro. de Cuenta</th>
+		      <th scope="col"> </th>
+		    </tr>
+	  	</thead>
+	  	<tbody>
+
+		      <tr th:each= "p : ${lstUsuarios}">
+		      
+			     <td th:text="${p.idusuario}"></td>
+			     <td th:text="${p.dni}"></td>
+			     <td th:text="${p.nombres}"></td>
+			     <td th:text="${p.apellidos}"></td>
+			     <td th:text="${p.edad}"></td>
+			     <div th:each="g : ${ListGeneros}" th:object="${g}"
+					      th:if="${p.idgenero}== ${g.idgenero}">
+					         <td th:text="${g.nombre}"></td>
+				 </div>
+				 <td th:text="${p.direccion}"></td>
+				 <td th:text="${p.email}"></td>
+				 <td th:text="${p.contrasenia}"></td>
+				 <div th:if="${p.estado}==1">
+   					 <td th:text="Disponible"></td>
+				</div>
+				<!-- ELSE -->
+				<div th:unless="${p.estado}==1">
+				   <td th:text="No+' '+Disponible"></td>
+				</div>
+			     <div th:each="pl : ${ListPerfiles}" th:object="${pl}"
+					      th:if="${p.idperfil}== ${pl.idperfil}">
+					         <td th:text="${pl.nombre}"></td>
+				</div>
+			     <td th:text="${p.nrocuenta}"></td>
+				
+
+		      	 <td width="120px" style="display:flex;margin:auto;">
+		      		<form method="post" th:action="@{/buscarUsuario}">
+		      			<input type="hidden" name="idusuario" th:value="${p.idusuario}">
+		      			<button type="submit" class="btn btn-primary">Editar</button>
+		      		</form>
+		      		&nbsp
+		      		<form method="post" th:action="@{/eliminarUsuario}">
+		      			<input type="hidden" name="idusuario" th:value="${p.idusuario}">
+		      			<button type="submit" class="btn btn-danger">Eliminar</button>
+		      		</form>
+		      		
+		      	</td>
+	    	</tr>
+	  	</tbody>
+	</table>
+	
+	</div>
+
+</body>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+</html>

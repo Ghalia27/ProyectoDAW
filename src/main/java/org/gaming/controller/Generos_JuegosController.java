@@ -37,7 +37,7 @@ public class Generos_JuegosController {
 			System.out.println("BIEN.X2......");
 			//model.addAttribute("message","Baeldung");
 			vista.setViewName("Registrar_GenJuegos");
-			vista.addObject("mensaje", "Insertado Correctamente");
+			vista.addObject("mensaje", "Modificado Correctamente");
 		}catch(Exception e) {
 			System.out.println("ERROR.......");
 			
