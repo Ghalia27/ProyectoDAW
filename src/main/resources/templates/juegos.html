@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+      <!-- Bootstrap style --> 
+    <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
+    <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
+	<!-- Bootstrap style responsive -->	
+	<!-- Bootstrap style responsive -->	
+	<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+	<link href="themes/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <title>Welcome to Our Site</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+<div id="contenedor" style="margin-left: 10%; width: 80%;">
+     <div class="row">
+     <div class="col col-md-12">
+		<h4>Últimos juegos </h4></div>
+		
+			  
+				<div th:each= "p : ${lstJuegos}" class="col col-md-4">
+				  <div class="thumbnail">
+					<a  href=""><img th:src="@{${'/img/IMAGEN' + p.idjuego + '.jpg'}}" width="120"/></a>
+					<div class="caption">
+					  <h5 th:text="${p.titulo}"></h5>
+					  <p th:text="${p.descripcion}"> 
+					  </p>
+					 
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" th:text="'s/' +${p.precio}" href="#"></a></h4>
+					</div>
+				  </div>
+				</div>
+			
+
+		</div>
+</div>
+</div>
+</body>
+</html>

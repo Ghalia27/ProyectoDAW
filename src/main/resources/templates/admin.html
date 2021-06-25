@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+      <!-- Bootstrap style --> 
+  <link href="css/estilos.css" rel="stylesheet" media="screen"/>
+    <title>Welcome to Our Site</title>
+
+</head>
+<style>
+
+</style>
+<body>
+
+<div layout:fragment="content">
+<div id="contenedor" style="margin-left: 10%; width: 80%;">
+     <div class="row">
+     	<div class="col col-md-12">
+			<h4>Mantenimientos </h4>
+		</div>
+			  
+				<div class="col col-md-4">
+				  <div class="thumbnail" >
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarJuego}">Mantenimiento de Juegos</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listGenJuegos}">Mantenimiento de Géneros juegos</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarEdiciones}">Mantenimiento de Ediciones</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarClasificaciones}">Mantenimiento de Clasificaciones</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarPlataformas}">Mantenimiento de Plataformas</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarUsuario}">Mantenimiento de Usuarios</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarPerfil}">Mantenimiento de Perfiles</a> </div>
+				  </div>
+				</div>
+				</div>
+				<div class="col col-md-4">
+				  <div class="thumbnail">
+					<div class="caption">
+					 <div  class="btn btn-secondary"> <a th:href="@{/listarGenero}">Mantenimiento de Géneros</a> </div>
+				  </div>
+				</div>
+				</div>
+		</div>
+</div>
+</div>
+</body>
+</html>

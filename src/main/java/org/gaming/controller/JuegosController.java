@@ -93,7 +93,15 @@ public class JuegosController {
 		model.addAttribute("ListEdicion", repo_ediciones.findAll());
 		return "Listar_Juegos";
 	}
-	
+	@GetMapping("/juegos")
+	public String todoJuegos(Model model) {
+		model.addAttribute("lstJuegos", repo.findAll());
+		model.addAttribute("ListGenJuego", repo_generos_juegos.findAll());
+		model.addAttribute("ListPlataform", repo_plataformas.findAll());
+		model.addAttribute("ListClasifi", repo_clasificacion.findAll());
+		model.addAttribute("ListEdicion", repo_ediciones.findAll());
+		return "juegos";
+	}
 	@PostMapping("/eliminarJuego")
 	public String eliminarJuego(@ModelAttribute Juegos j, Model model) {
 		System.out.println(j);

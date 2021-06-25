@@ -63,7 +63,7 @@
 				<label for="contrasenia">Contraseña</label>
 				<input type="text" th:field="*{contrasenia}" class="form-control" id="contrasenia" placeholder="Ingrese contrasenia de usuario">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group">
 					<label for="idEstado">Estado</label>
 					<select  th:field="*{estado}"  class="form-control" id="idestado">
 					      <option th:value="1" th:text="Disponible"></option>
@@ -72,7 +72,7 @@
 				</div>
 
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group ">
 					<label for="idperfil">Perfil</label>
 					<select th:field="*{idperfil}"   class="form-control" id="idperfil">
 					      <option th:value="-1"> Seleccione un perfil</option>
@@ -84,13 +84,13 @@
 				</div>
 			</div>
 
-				<div class="form-group col-md-4">
+				<div class="form-group ">
 					<label for="nro_cuenta">Nro. de cuenta</label>
-					<input type="text" th:field="*{nro_cuenta}" class="form-control" id="nro_cuenta" placeholder="nro_cuenta">
+					<input type="text" th:field="*{nrocuenta}" class="form-control" id="nro_cuenta" placeholder="nro_cuenta">
 				</div>
 
 
-			</div>
+			
 			<button type="submit" class="btn btn-primary">Registrar</button>
 			<a th:href="@{/listarUsuario}" class="btn btn-primary">Listado</a>
 

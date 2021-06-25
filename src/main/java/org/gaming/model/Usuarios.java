@@ -49,6 +49,25 @@ public class Usuarios {
 	@Column(name="nro_cuenta")
 	private int nrocuenta;
 
+	public Usuarios() {
+	}
+
+	public Usuarios(int idusuario, String nombres, String apellidos, int edad, String direccion, String email,
+			String contrasenia, String estado, int idperfil, int idgenero, int dni, int nrocuenta) {
+		this.idusuario = idusuario;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.edad = edad;
+		this.direccion = direccion;
+		this.email = email;
+		this.contrasenia = contrasenia;
+		this.estado = estado;
+		this.idperfil = idperfil;
+		this.idgenero = idgenero;
+		this.dni = dni;
+		this.nrocuenta = nrocuenta;
+	}
+
 	public int getIdusuario() {
 		return idusuario;
 	}

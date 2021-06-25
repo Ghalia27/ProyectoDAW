@@ -1,10 +1,12 @@
 package org.gaming.controller;
 
+import org.gaming.Security.util.Passgenerator;
 import org.gaming.model.Usuarios;
 import org.gaming.repository.IGenerosRepository;
 import org.gaming.repository.IPerfilesRepository;
 import org.gaming.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+@Controller
 public class UsuariosController {
 	@GetMapping("/cargarUsuario")
 	public String cargarUsuario(Model model) {
 		model.addAttribute("usuarios", new Usuarios());
+		model.addAttribute("ListPerfiles", repo_perfiles.findAll());
+		model.addAttribute("ListGeneros", repo_generos.findAll());
 		return "Registrar_Usuarios";
 	}
 	@Autowired
@@ -27,6 +32,9 @@ public class UsuariosController {
 	private IGenerosRepository repo_generos;
 	@PostMapping("/grabarUsuario")
 	public String guardarUsuario(@ModelAttribute Usuarios usuario, Model model,BindingResult bindingResult, RedirectAttributes redirectAttrs) throws Exception{
+		Passgenerator pass = new Passgenerator();
+		String contra="vacio";
+		
 		//guardar producto
 		if (bindingResult.hasErrors()) {
 	        return "Registrar_Usuarios";
@@ -38,10 +46,14 @@ public class UsuariosController {
 	                .addFlashAttribute("clase", "warning");
 	        return "Editar_Usuario";
 	    }
-	    repo.save(usuario);
+	    repo.save(new Usuarios(usuario.getIdusuario(),usuario.getNombres(),usuario.getApellidos(),
+ 				usuario.getEdad(),usuario.getDireccion(),usuario.getEmail(),pass.CrearContra(usuario.getContrasenia()),
+				usuario.getEstado(),usuario.getIdperfil(),usuario.getIdgenero(),usuario.getDni(),usuario.getNrocuenta()));
 	    redirectAttrs
 	            .addFlashAttribute("mensaje", "Agregado correctamente")
 	            .addFlashAttribute("clase", "success");
+	    contra=pass.CrearContra(usuario.getContrasenia());
+		System.out.println(contra);
 	    return "redirect:/cargarUsuario";
 	}
 	
@@ -49,8 +61,8 @@ public class UsuariosController {
 	public String listadoUsuario(Model model) {
 		System.out.println("Estra a listado");
 		model.addAttribute("lstUsuarios", repo.findAll());
-		//model.addAttribute("ListPerfiles", repo_perfiles.findAll());
-		//model.addAttribute("ListGeneros", repo_generos.findAll());
+		model.addAttribute("ListPerfiles", repo_perfiles.findAll());
+		model.addAttribute("ListGeneros", repo_generos.findAll());
 		return "Listar_Usuarios";
 	}
 	
@@ -63,7 +75,7 @@ public class UsuariosController {
 	}
 	@PostMapping("/buscarUsuario")
 	public String buscarUsuario(@ModelAttribute Usuarios u,  Model model) {
-
+		System.out.println(u);
 		model.addAttribute("usuarios",repo.findById(u.getIdusuario()));
 		model.addAttribute("ListPerfiles", repo_perfiles.findAll());
 		model.addAttribute("ListGeneros", repo_generos.findAll());
