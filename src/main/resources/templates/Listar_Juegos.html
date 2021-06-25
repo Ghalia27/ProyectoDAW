@@ -20,15 +20,18 @@
 <body>
 <div id="contenedor" style="margin-left: 10%; width: 80%;">
 	<h1>Listar - Géneros</h1>
+	<form method="get" th:action="@{/cargarJuego}">
+		      			<button type="submit" class="btn btn-primary">Registrar</button>
+		      		</form>
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
 		    	 <th scope="col">Codigo</th>
-		      	  <th scope="col" >Genero</th>
+		    	  <th scope="col" >Título</th>
+		      	  <th scope="col" >Género de Juego</th>
 			      <th scope="col" >Plataforma</th>
 			      <th scope="col" >Clasificacion</th>
 			      <th scope="col" >Edicion</th>
-			      <th scope="col" >Título</th>
 			      <th scope="col" >Descripción</th>
 			      <th scope="col" >Año</th>
 			      <th scope="col" >Stock</th>
@@ -40,17 +43,40 @@
 	  	<tbody>
 
 		      <tr th:each= "p : ${lstJuegos}">
+		      
 			     <td th:text="${p.idjuego}"></td>
-			     <td th:text="${p.idgenero}"></td>
-			     <td th:text="${p.idplataforma}"></td>
-			     <td th:text="${p.idclasificacion}"  ></td>
-			     <td th:text="${p.idedicion}"></td>
 			     <td th:text="${p.titulo}"></td>
-			     <th th:text="${p.descripcion}"  ></th>
+			     <div th:each="gj : ${ListGenJuego}" th:object="${gj}"
+					      th:if="${p.idgenerojuego}== ${gj.idgenerojuego}">
+					         <td th:text="${gj.nombre}"></td>
+					</div>
+			     <div th:each="pl : ${ListPlataform}" th:object="${pl}"
+					      th:if="${p.idplataforma}== ${pl.idplataforma}">
+					         <td th:text="${pl.nombre}"></td>
+					</div>
+			    <div th:each="cl : ${ListClasifi}" th:object="${cl}"
+					      th:if="${p.idclasificacion}== ${cl.idclasificacion}">
+					         <td th:text="${cl.nombre}"></td>
+					</div>
+					
+				<div th:each="ed : ${ListEdicion}" th:object="${ed}"
+					      th:if="${p.idedicion}== ${ed.idedicion}">
+					         <td th:text="${ed.nombre}"></td>
+					</div>
+			     
+			     <td th:text="${p.descripcion}"  ></td>
 			     <td th:text="${p.anio}"></td>
 			     <td th:text="${p.stock}"></td>
 			     <td th:text="${p.precio}"></td>
-			     <td th:text="${p.estado}"></td>
+				
+			     <div th:if="${p.estado}==1">
+   					 <td th:text="Disponible"></td>
+				</div>
+				<!-- ELSE -->
+				<div th:unless="${p.estado}==1">
+				   <td th:text="No+' '+Disponible"></td>
+				</div>
+			    
 		      	 <td width="120px" style="display:flex;margin:auto;">
 		      		<form method="get" th:action="@{/buscarJuego}">
 		      			<input type="hidden" name="idjuego" th:value="${p.idjuego}">

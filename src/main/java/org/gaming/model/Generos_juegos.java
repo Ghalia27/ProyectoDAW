@@ -11,7 +11,7 @@ public class Generos_juegos {
 	
 	@Id
 	@Column(name="idgenerojuego")
-	private int idgenero;
+	private int idgenerojuego;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -19,12 +19,14 @@ public class Generos_juegos {
 	@Column(name="descripcion")
 	private String descripcion;
 
-	public int getIdgenero() {
-		return idgenero;
+	
+
+	public int getIdgenerojuego() {
+		return idgenerojuego;
 	}
 
-	public void setIdgenero(int idgenero) {
-		this.idgenero = idgenero;
+	public void setIdgenerojuego(int idgenerojuego) {
+		this.idgenerojuego = idgenerojuego;
 	}
 
 	public String getNombre() {

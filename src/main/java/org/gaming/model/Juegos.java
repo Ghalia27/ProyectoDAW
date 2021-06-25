@@ -2,6 +2,8 @@ package org.gaming.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,11 +12,12 @@ import javax.persistence.Table;
 public class Juegos {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idjuego")
 	private int idjuego;
 	
 	@Column(name="idgenerojuego")
-	private int idgenero;
+	private int idgenerojuego;
 	
 	@Column(name="idplataforma")
 	private int idplataforma;
@@ -54,12 +57,14 @@ private int estado;
 		this.idjuego = idjuego;
 	}
 
-	public int getIdgenero() {
-		return idgenero;
+	
+
+	public int getIdgenerojuego() {
+		return idgenerojuego;
 	}
 
-	public void setIdgenero(int idgenero) {
-		this.idgenero = idgenero;
+	public void setIdgenerojuego(int idgenerojuego) {
+		this.idgenerojuego = idgenerojuego;
 	}
 
 	public int getIdplataforma() {

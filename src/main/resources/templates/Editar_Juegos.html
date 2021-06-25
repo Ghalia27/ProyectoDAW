@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+	<div id="contenedor" style="margin-left: 10%; width: 80%;">
+		<h1>Registro de Juegos</h1>
+		<form  th:object="${juegos}" method="POST" th:action="@{/grabarJuego}">
+
+				
+			<div class="form-group">			
+				<label for="idgenerojuego">Género de Juegos</label>
+				<select th:field="*{idgenerojuego}"   class="form-control" id="exampleFormControlSelect1">
+				      <option> Seleccione un género de juego</option>
+				      <option  th:each="t: ${ListGenJuego}" 
+				      th:value="${t.idgenerojuego}" th:text="${t.nombre}"
+				      ></option>					     
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="idplataforma">PLataforma</label>
+				<select th:field="*{idplataforma}"   class="form-control" id="exampleFormControlSelect1">
+					      <option> Seleccione una plataforma</option>
+					      <option  th:each="t: ${ListPlataform}"  
+					      th:value="${t.idplataforma}" th:text="${t.nombre}"
+					      ></option>
+					     
+					 </select>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="idClasificacion">Clasificacion</label>
+					<select th:field="*{idclasificacion}"   class="form-control" id="exampleFormControlSelect1">
+					      <option> Seleccione una clasificación</option>
+					      <option  th:each="t: ${ListClasifi}" 
+					      th:value="${t.idclasificacion}" th:text="${t.Nombre}"
+					      ></option>
+					     
+					 </select>
+				</div>
+			</div>
+				
+			<div class="form-row">
+
+				<div class="form-group col-md-4">
+					<label for="idEdicion">Edicion</label>
+					<select th:field="*{idedicion}"   class="form-control" id="exampleFormControlSelect1">
+					      <option> Seleccione una edición</option>
+					      <option  th:each="t: ${ListEdicion}" 
+					      th:value="${t.idedicion}" th:text="${t.nombre}"
+					      ></option>
+					     
+					 </select>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="titulo">Título</label>
+					<input type="text" th:field="*{titulo}" class="form-control" id="IdNombre" placeholder="Nombre del Videojuego">
+				</div>
+								
+				<div class="form-group col-md-4">
+					<label for="IdDescrip">Descripción</label>
+					<input type="text" th:field="*{descripcion}" class="form-control" id="IdDescrip" placeholder="Descripcion del Videojuego">
+				</div>
+				
+				<div class="form-group col-md-4">
+					<label for="anio">Fecha</label>
+					<input type="date" th:field="*{anio}" class="form-control" id="anio" >
+				</div>
+				<div class="form-group col-md-4">
+					<label for="IdStock">Stock</label>
+					<input type="number"  th:field="*{stock}"class="form-control" id="IdStock" placeholder="Stock del producto">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="precio">Precio</label>
+					<input type="number" th:field="*{precio}" class="form-control" id="IdPrecio" placeholder="Precio del producto">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="idEstado">Estado</label>
+					<select  th:field="*{estado}"  class="form-control" id="idestado">
+					      <option th:value="1" th:text="Disponible"></option>
+					      <option th:value="2" th:text="No Disponible"></option>					      
+					 </select>		
+				</div>
+
+			</div>
+			<button type="submit" class="btn btn-primary">Registrar</button>
+			<a th:href="@{/listarJuego}" class="btn btn-primary">Listado</a>
+
+		</form>
+
+	</div>
+	<c:if test="${not empty mensaje}">
+      <div class="alert alert-info" th:text="${mensaje}"> </div>
+ </c:if>
+
+</body>
+</html>

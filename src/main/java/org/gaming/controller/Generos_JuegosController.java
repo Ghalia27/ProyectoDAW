@@ -42,7 +42,7 @@ public class Generos_JuegosController {
 			System.out.println("ERROR.......");
 			
 		};
-		model.addAttribute("GenJuego", repo.findById(GenJuego.getIdgenero()));
+		model.addAttribute("GenJuego", repo.findById(GenJuego.getIdgenerojuego()));
 		return "Registrar_GenJuegos";
 	}
 	
@@ -50,7 +50,7 @@ public class Generos_JuegosController {
 	public String buscarGen(@ModelAttribute Generos_juegos  gj, Model model) {
 		
 		System.out.println(gj);
-		model.addAttribute("GenJuego", repo.findById(gj.getIdgenero()));
+		model.addAttribute("GenJuego", repo.findById(gj.getIdgenerojuego()));
 		model.addAttribute("opcion", 1);
 		return "Registrar_GenJuegos";
 		
@@ -60,7 +60,7 @@ public class Generos_JuegosController {
 	public String eliminarPerfil(@ModelAttribute Generos_juegos p, Model model) {
 		System.out.println(p);
 		repo.delete(p);
-		model.addAttribute("GenJuego",repo.findById(p.getIdgenero()));
+		model.addAttribute("GenJuego",repo.findById(p.getIdgenerojuego()));
 		model.addAttribute("lstGenJuegos", repo.findAll());
 		return "List_GenJuegos";
 	}
