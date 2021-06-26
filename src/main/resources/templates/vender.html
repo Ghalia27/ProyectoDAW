@@ -58,8 +58,9 @@
                     <td th:text="${p.cantidad}"></td>
                     <td th:text="${p.total}"></td>
                     <td>
-                        <form th:action="@{/vender/quitar/} + ${iterador.index}" method="post">
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                        <form th:action="@{/vender/quitar/}" method="post">
+                        	<input type="hidden" name="idjuego" th:value="${p.idjuego}">
+                            <button type="submit" class="btn btn-danger">X<i class="fa fa-trash"></i>
                             </button>
                         </form>
                     </td>

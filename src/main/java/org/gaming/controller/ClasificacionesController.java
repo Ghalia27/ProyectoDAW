@@ -33,8 +33,7 @@ public class ClasificacionesController {
 			return vista;
 		}else {
 			vista.addObject("mensaje", "Error");
-			vista.setViewName("Mantener_Clasificacion");		
-
+			vista.setViewName("Mantener_Clasificacion");
 			return vista;
 		}
 		

@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,11 +20,12 @@
 <script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-<div id="contenedor" style="margin-left: 10%; width: 80%;">
+<div layout:fragment="content">
+	<div id="contenedor" style="margin:3%; ">
 	<h1>Listar - Usuarios</h1>
-	<form method="get" th:action="@{/cargarUsuario}">
-		      			<button type="submit" class="btn btn-primary">Registrar</button>
-		      		</form>
+		<form method="get" th:action="@{/cargarUsuario}">
+		    <button type="submit" class="btn btn-primary">Registrar</button>
+		 </form>
 	<table class="table" id="myTable">
 		<thead>
 		    <tr>
@@ -34,7 +37,7 @@
 		      <th scope="col" >Sexo</th>
 		      <th scope="col" >Dirección</th>
 		      <th scope="col" >Email</th>
-		      <th scope="col" >Contraseña</th>
+		      <th  scope="col" >Contraseña</th>
 		      <th scope="col" >Estado</th>
 		      <th scope="col" >Perfil</th>
 		      <th scope="col" >Nro. de Cuenta</th>
@@ -88,7 +91,7 @@
 	</table>
 	
 	</div>
-
+</div>
 </body>
 <script>
 $(document).ready( function () {

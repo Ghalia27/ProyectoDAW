@@ -80,7 +80,7 @@ public class ECommerceController {
 	@PostMapping(value = "/agregarVenta")
 	public String agregarAlCarrito(@ModelAttribute Juegos juego, HttpServletRequest request, RedirectAttributes redirectAttrs) {
 	    ArrayList<Carrito> carrito = this.obtenerCarrito(request);
-	    Juegos productoBuscadoPorCodigo = IJuegosRepository.findFirstByCodigo(juego.getIdjuego());
+	    Juegos productoBuscadoPorCodigo = repo.findFirstByIdjuego(juego.getIdjuego());
 	    if (repo.findById(juego.getIdjuego()) == null) {
 	        redirectAttrs
 	                .addFlashAttribute("mensaje", "El producto con el código " + juego.getIdjuego() + " no existe")

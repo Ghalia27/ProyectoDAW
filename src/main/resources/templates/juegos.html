@@ -11,7 +11,7 @@
 	<!-- Bootstrap style responsive -->	
 	<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 	<link href="themes/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <title>Welcome to Our Site</title>
+    <title>Venta videojuegos</title>
 </head>
 <body>
 
@@ -27,10 +27,10 @@
 					<a  href=""><img th:src="@{${'/img/IMAGEN' + p.idjuego + '.jpg'}}" width="120"/></a>
 					<div class="caption">
 					  <h5 th:text="${p.titulo}"></h5>
+					  <p th:text="'Stock:'+ ${p.stock}"></p>
 					  <p th:text="${p.descripcion}"> 
 					  </p>
-					 
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" th:text="'s/' +${p.precio}" href="#"></a></h4>
+					  <h4 style="text-align:center"> <a class="btn" th:href="@{/vender}">Agregar al <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" th:text="'s/' +${p.precio}" href="#"></a></h4>
 					</div>
 				  </div>
 				</div>

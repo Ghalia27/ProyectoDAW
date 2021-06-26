@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,7 +20,7 @@
 <script src="https:////cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-
+<div layout:fragment="content">
 	<div id="contenedor" style="margin-left: 10%; width: 80%;">
 
 		<h1>Listado de Plataformas de Juegos</h1>
@@ -59,9 +61,15 @@
     
   </tbody>
 </table>
+
+		<form method="post" th:action="@{/reportes/reporteplataformas}">
+		      	
+		      			<button type="submit" class="btn btn-info">Reporte</button>
+		      		</form>
 	</div>
 
 
+</div>
 </body>
 <script>
 $(document).ready( function () {
