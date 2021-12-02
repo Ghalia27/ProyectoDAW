@@ -9,7 +9,7 @@ public class IndexController {
 
     @GetMapping("/Index")
     public String homePage() {
-        return "index2";
+        return "indexx";
     }
 
     @GetMapping("/contact")
@@ -21,6 +21,7 @@ public class IndexController {
     public String aboutPage() {
         return "about";
     }
+    
     /*
     @GetMapping("/juegos")
     public String juegosPage() {

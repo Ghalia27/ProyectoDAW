@@ -36,7 +36,21 @@
 
             </div>
         </form>
-        
+        <!--
+         <form class="mb-2" th:action="@{/vender/terminar}" method="post">
+            <button type="submit" class="btn btn-success">Terminar&nbsp;<i class="fa fa-check"></i>
+            </button>
+            <a th:href="@{/vender/limpiar}" class="btn btn-danger">Cancelar venta&nbsp;<i
+                    class="fa fa-trash"></i>
+            </a>
+        </form>-->
+         <form class="mb-2" >
+            <button type="submit" class="btn btn-success">Terminar&nbsp;<i class="fa fa-check"></i>
+            </button>
+            <a th:href="@{/vender/limpiarVenta}" class="btn btn-danger">Cancelar venta&nbsp;<i
+                    class="fa fa-trash"></i>
+            </a>
+        </form>
         <h1 th:text="${'Total: ' + total}"></h1>
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -67,6 +81,7 @@
                 </tr>
                 </tbody>
             </table>
+           
         </div>
     </div>
 </main>

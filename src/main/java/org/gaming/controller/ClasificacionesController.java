@@ -59,4 +59,12 @@ public class ClasificacionesController {
 		model.addAttribute("lstClasificaciones", repo.findAll());
 		return "Mantener_Clasificacion";
 	}
+	@GetMapping("/partial_up")
+    public String getPartial() {
+        return "partial_up.html";
+    }
+    @GetMapping("/partial_down")
+    public String getHome() {
+        return "partial_down.html";
+    }
 }
